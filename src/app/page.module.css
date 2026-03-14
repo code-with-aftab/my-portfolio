@@ -1,141 +1,156 @@
-.page {
-  --background: #fafafa;
-  --foreground: #fff;
-
-  --text-primary: #000;
-  --text-secondary: #666;
-
-  --button-primary-hover: #383838;
-  --button-secondary-hover: #f2f2f2;
-  --button-secondary-border: #ebebeb;
-
-  display: flex;
+.hero {
   min-height: 100vh;
-  align-items: center;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
-  font-family: var(--font-geist-sans);
-  background-color: var(--background);
-}
-
-.main {
-  display: flex;
-  min-height: 100vh;
-  width: 100%;
-  max-width: 800px;
-  flex-direction: column;
   align-items: flex-start;
-  justify-content: space-between;
-  background-color: var(--foreground);
-  padding: 120px 60px;
+  position: relative;
+  overflow: hidden;
 }
 
-.intro {
+.glowBlob {
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.15) 0%, rgba(0,0,0,0) 70%);
+  top: -100px;
+  right: -200px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.subtitle {
+  font-family: var(--font-mono);
+  color: var(--accent);
+  margin-bottom: 1.5rem;
+  font-size: 1.2rem;
+  letter-spacing: 0.05em;
+}
+
+.title {
+  font-size: 5rem;
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+  z-index: 2;
+  position: relative;
+}
+
+.description {
+  font-size: 1.25rem;
+  color: #a1a1aa;
+  max-width: 600px;
+  margin-bottom: 3rem;
+  z-index: 2;
+  position: relative;
+}
+
+.ctaGroup {
+  display: flex;
+  gap: 1.5rem;
+  z-index: 2;
+  position: relative;
+}
+
+/* Sections */
+.sectionTitle {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 4rem;
+  text-align: center;
+}
+
+.projectsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+}
+
+.projectCard {
+  padding: 2rem;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  text-align: left;
-  gap: 24px;
+  height: 100%;
 }
 
-.intro h1 {
-  max-width: 320px;
-  font-size: 40px;
+.projectIcon {
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.projectTitle {
+  font-size: 1.5rem;
   font-weight: 600;
-  line-height: 48px;
-  letter-spacing: -2.4px;
-  text-wrap: balance;
-  color: var(--text-primary);
+  margin-bottom: 1rem;
 }
 
-.intro p {
-  max-width: 440px;
-  font-size: 18px;
-  line-height: 32px;
-  text-wrap: balance;
-  color: var(--text-secondary);
+.projectDesc {
+  color: #a1a1aa;
+  margin-bottom: 2rem;
+  flex-grow: 1;
 }
 
-.intro a {
-  font-weight: 500;
-  color: var(--text-primary);
-}
-
-.ctas {
+.techStack {
   display: flex;
-  flex-direction: row;
-  width: 100%;
-  max-width: 440px;
-  gap: 16px;
-  font-size: 14px;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
 }
 
-.ctas a {
+.techItem {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--secondary);
+  background: rgba(59, 130, 246, 0.1);
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+}
+
+.projectLinks {
   display: flex;
-  justify-content: center;
+  gap: 1rem;
+}
+
+.projectLink {
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  color: var(--foreground);
+  text-decoration: none;
+  display: flex;
   align-items: center;
-  height: 40px;
-  padding: 0 16px;
-  border-radius: 128px;
-  border: 1px solid transparent;
-  transition: 0.2s;
-  cursor: pointer;
-  width: fit-content;
+  gap: 0.5rem;
+}
+
+.projectLink:hover {
+  color: var(--primary);
+}
+
+/* Skills section */
+.skillsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.skillPill {
+  background: var(--surface);
+  border: 1px solid var(--surface-border);
+  padding: 1rem 2rem;
+  border-radius: 9999px;
   font-weight: 500;
+  transition: all 0.3s ease;
 }
 
-a.primary {
-  background: var(--text-primary);
-  color: var(--background);
-  gap: 8px;
+.skillPill:hover {
+  border-color: var(--primary);
+  background: rgba(139, 92, 246, 0.05);
+  transform: translateY(-3px);
 }
 
-a.secondary {
-  border-color: var(--button-secondary-border);
-}
-
-/* Enable hover only on non-touch devices */
-@media (hover: hover) and (pointer: fine) {
-  a.primary:hover {
-    background: var(--button-primary-hover);
-    border-color: transparent;
-  }
-
-  a.secondary:hover {
-    background: var(--button-secondary-hover);
-    border-color: transparent;
-  }
-}
-
-@media (max-width: 600px) {
-  .main {
-    padding: 48px 24px;
-  }
-
-  .intro {
-    gap: 16px;
-  }
-
-  .intro h1 {
-    font-size: 32px;
-    line-height: 40px;
-    letter-spacing: -1.92px;
-  }
-}
-
-@media (prefers-color-scheme: dark) {
-  .logo {
-    filter: invert();
-  }
-
-  .page {
-    --background: #000;
-    --foreground: #000;
-
-    --text-primary: #ededed;
-    --text-secondary: #999;
-
-    --button-primary-hover: #ccc;
-    --button-secondary-hover: #1a1a1a;
-    --button-secondary-border: #1a1a1a;
+@media (max-width: 768px) {
+  .title {
+    font-size: 3.5rem;
   }
 }
